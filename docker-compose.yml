@@ -3,20 +3,24 @@ version: '3.9'
 services:
     node1:
       image: cassandra:4.0
+      restart: unless-stopped
       ports:
         - 9142:9042
       volumes:
         - cassandra1:/var/lib/cassandra
+        - ./files:/srv/files
       env_file:
         - cassandra.env
 #      environment:
 
     node2:
       image: cassandra:4.0
+      restart: unless-stopped
       ports:
         - 9242:9042
       volumes:
         - cassandra2:/var/lib/cassandra
+        - ./files:/srv/files
       env_file:
         - cassandra.env
       depends_on:
@@ -24,10 +28,12 @@ services:
 
     node3:
       image: cassandra:4.0
+      restart: unless-stopped
       ports:
         - 9342:9042
       volumes:
         - cassandra3:/var/lib/cassandra
+        - ./files:/srv/files
       env_file:
         - cassandra.env
 #      environment:
@@ -36,10 +42,12 @@ services:
 
     node4:
       image: cassandra:4.0
+      restart: unless-stopped
       ports:
         - 9442:9042
       volumes:
         - cassandra4:/var/lib/cassandra
+        - ./files:/srv/files
       env_file:
         - cassandra.env
 #      environment:
